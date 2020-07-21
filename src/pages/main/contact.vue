@@ -4,11 +4,11 @@
             <div class="col-12 col-sm-6">
                 <ContactForm />
                 <q-card-actions align="center"> 
-                    <q-btn round color="pink"  text-color="white" icon="mdi-instagram"  push @click="extLink('www.instagram.com/g.ikwegbu/')">
+                    <!-- <q-btn round color="pink"  text-color="white" icon="mdi-instagram"  push @click="extLink('www.instagram.com/g.ikwegbu/')">
                         <q-tooltip>
                             @GIkwegbu
                         </q-tooltip>
-                    </q-btn> 
+                    </q-btn>  -->
                     <q-btn round color="primary" icon="mdi-twitter"  push @click="extLink('twitter.com/GIkwegbu')">
                         <q-tooltip>
                             @GIkwegbu
@@ -24,14 +24,14 @@
                             +2348101570258
                         </q-tooltip>
                     </q-btn>
-                    <q-btn flat push @click="extLink('medium.com/@g.ikwegbu')">
+                    <!-- <q-btn flat push @click="extLink('medium.com/@g.ikwegbu')">
                         <q-tooltip>
                            Medium
                         </q-tooltip>
                         <q-avatar >
                             <img src="https://cdns.iconmonstr.com/wp-content/assets/preview/2018/240/iconmonstr-medium-1.png">
                         </q-avatar>
-                    </q-btn>
+                    </q-btn> -->
                     <q-btn round color="grey" icon="mdi-linkedin" push  @click="extLink('www.linkedin.com/in/george-ikwegbu-56ab43156/')">
                             <q-tooltip>
                             George Ikwegbu

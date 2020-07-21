@@ -2,17 +2,17 @@
   <q-layout view="lHh Lpr lFf" >
     <q-header elevated :class=" $q.dark.isActive ? 'bg-dark' : 'bg-white'">
       <q-toolbar class="text-grey"> 
-        <q-btn flat dense round icon="menu" aria-label="Menu" class="lt-sm" @click="leftDrawerOpen = !leftDrawerOpen" />
+        <q-btn flat dense round icon="menu" aria-label="Menu"  @click="leftDrawerOpen = !leftDrawerOpen" />
 
         <q-toolbar-title>
-          George Ikwegbu
+          Admin Panel
         </q-toolbar-title>
         <q-tabs v-model="tab" indicator-color="primary" active-color="primary"  class="text-grey-5 q-pb-sm gt-xs"  align="justify" > 
-            <q-route-tab :to="{name: 'home'}" exact  name="home" label="Home"  />
+            <!-- <q-route-tab :to="{name: 'home'}" exact  name="home" label="Home"  />
             <q-route-tab :to="{name: 'about'}" exact  name="about" label="About "  />
             <q-route-tab :to="{name: 'contact'}" exact  name="contact" label="Contact"  />
             <q-route-tab :to="{name: 'blog'}" exact  name="blog" label="Blog"  /> 
-            <q-route-tab :to="{name: 'portfolio'}" exact  name="portfolio" label="Portfolio"  /> 
+            <q-route-tab :to="{name: 'portfolio'}" exact  name="portfolio" label="Portfolio"  />  -->
             <q-btn flat color="" @click="$q.fullscreen.toggle()" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"  />
             <q-btn dense flat round  :color="$q.dark.isActive ?  'yellow' : 'grey' " :icon=" $q.dark.isActive ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'"  @click="$q.dark.toggle()"/> 
       </q-tabs>  
@@ -39,24 +39,24 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" side="left" overlay behavior="mobile" elevated>
+    <q-drawer v-model="leftDrawerOpen" side="left"  elevated>
       <q-scroll-area style="height: calc(100% - 150px); margin-top: 1px; border-right: 1px solid #ddd">
         <q-list padding> 
           <q-item-label header>Navigation</q-item-label>
           <q-separator  inset class="q-mx-lg" />
 
-          <q-item  clickable v-ripple @click="leftDrawerOpen = !leftDrawerOpen" :to="{ name: 'home' }">
+          <q-item  clickable v-ripple @click="leftDrawerOpen = !leftDrawerOpen" :to="{ name: 'dashboard' }">
           <!-- <q-item  clickable v-ripple @click="leftDrawerOpen = !leftDrawerOpen" > -->
             <q-item-section avatar>
               <q-icon name="mdi-desktop-mac-dashboard" />
             </q-item-section>
 
             <q-item-section>
-              Home
+              Dashboard
             </q-item-section>
           </q-item>   
  
-          <q-item clickable v-ripple  :to="{ name: 'about' }">
+          <q-item clickable v-ripple  :to="{ name: '' }">
             <q-item-section avatar>
               <q-icon name="mdi-help" />
             </q-item-section>
@@ -66,17 +66,17 @@
             </q-item-section>
           </q-item> 
 
-          <q-item  clickable v-ripple :to="{ name: 'contact' }">
+          <q-item  clickable v-ripple :to="{ name: 'message' }">
             <q-item-section avatar>
               <q-icon name="mdi-email-check" />
             </q-item-section>
 
             <q-item-section>
-              Contact
+              Messages
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple :to="{ name: 'blog' }">
+          <q-item clickable v-ripple :to="{ name: 'adminBlog' }">
             <q-item-section avatar>
               <q-icon name="mdi-pencil-plus" />
             </q-item-section>
@@ -86,7 +86,7 @@
             </q-item-section>
           </q-item>  
 
-         <q-item clickable v-ripple :to="{ name: 'portfolio' }">
+         <q-item clickable v-ripple :to="{ name: 'allPortfolio' }">
             <q-item-section avatar>
               <q-icon name="mdi-briefcase-plus" />
             </q-item-section>
@@ -116,7 +116,7 @@
           <q-avatar size="56px" class="q-mb-sm">
             <img src="~assets/George_about.jpg">
           </q-avatar>
-          <div class="text-weight-bold">George Ikwegbu 👽</div>
+          <div class="text-weight-bold">George Ikwegbu Chinedu Iheanyichukwu 👽</div>
           <div>g.ikwegbu@gmail.com</div>
         </div>
       </q-img>
@@ -158,7 +158,7 @@
 // import EssentialLink from 'components/EssentialLink.vue'
 
 export default {
-  name: 'MainLayout',
+  name: 'AdminLayout',
 
   components: {
     

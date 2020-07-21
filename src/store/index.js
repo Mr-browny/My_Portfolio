@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import createPersistedState from "vuex-persistedstate";
+
 // import example from './module-example'
+import repos from './repos'
+import blogs from './blogs'
 
 Vue.use(Vuex)
 
@@ -18,7 +22,10 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // example
+      repos,
+      blogs,
     },
+    plugins: [createPersistedState()],
 
     // enable strict mode (adds overhead!)
     // for dev mode only

@@ -7,8 +7,8 @@
                         <div class="text-h1">Hi</div>
                         <div class="text-h5 text-grey"> 
                             Welcome to my website. <br/> 
-                            Freely checkout my Portfolio <br/>
-                            To see what I have been up to OR.. <br/> 
+                            Freely checkout my Portfolio  
+                            To see what I have been up to OR..  
                             Read Blog stories to Learn from my experience
                         </div>
                     </q-card-section>
