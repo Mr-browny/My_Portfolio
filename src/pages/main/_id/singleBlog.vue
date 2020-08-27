@@ -2,16 +2,7 @@
     <q-page padding>
         <div>
             <q-btn color="secondary" rounded outline icon="mdi-chevron-left" @click="$router.go(-1)" />
-        </div>
-        <div class="text-right ">
-            <div>
-                <q-btn :to="{name: 'dashboard'}" flat class="text-grey">Admin </q-btn>
-                |
-                 <q-btn :to="{name: 'adminBlog'}" flat class="text-grey"> Blog Listing </q-btn>
-                |
-                <span> Blog Details </span>
-            </div>
-        </div>
+        </div> 
 
         <div class="q-layout-padding q-mx-auto " style="max-width: 1000px; width: 100%; min-height: 100vh;"> 
             <!-- <Media /> -->
@@ -30,7 +21,7 @@
     </q-page>
 </template>
 
-<style >
+<style scoped>
     a, a:visited, a:hover{
         text-decoration: none;
         color: #1976d2;
@@ -69,7 +60,7 @@ export default {
             })
             .catch( err => {
                 // _.$router.push( {name: 'adminBlog'} )
-                _.$router.go(-1)
+                // _.$router.go(-1)
             }) 
         }
     }

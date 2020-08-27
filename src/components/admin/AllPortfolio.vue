@@ -4,7 +4,7 @@
       <div class="q-pa-md">
           <q-btn label="Add New" icon-right="add" @click="newPortfolio" color="secondary" rounded outline />
       </div>
-    <q-table  title="Current Portfolio" :data="records" :columns="columns" :filter="filter" row-key="name"  >
+    <q-table  title="Current Portfolio" :data="repos" :columns="columns" :filter="filter" row-key="name"  >
       <template v-slot:body="props"  >
         <q-tr :props="props">
           <q-td key="name" :props="props">
@@ -15,18 +15,17 @@
               {{ props.row.description }} 
           </q-td>
 
-          <q-td key="image" :props="props">
+          <q-td key="language" :props="props">
             <q-badge color="secondary">
-              {{ props.row.image }}
+              {{ props.row.language }}
             </q-badge>
           </q-td>
 
           <q-td key="createdAt" :props="props"> 
-              <!-- {{ new Date(props.row.createdAt).toDateString() }}  -->
-              {{  props.row.createdAt }} 
+              {{ new Date(props.row.createdAt).toDateString() }}  
           </q-td> 
 
-          <q-td key="view" :props="props">  
+          <q-td key="id" :props="props">  
             <!-- {{ props.row.id }} -->
              <q-btn round flat outline  color="secondary" icon="mdi-eye-check" @click="view_repo(props.row.id)" />
           </q-td> 
@@ -57,55 +56,35 @@ export default {
   data () {
     return { 
       projectType: '',
-      row_details: {},
+      repos: [], 
       filter: '', 
 
       columns: [
         { name: 'name', required: true, label: 'Name', align: 'left', field: row => row.name, format: val => `${val}`, sortable: true },
-        { name: 'description', align: 'center', label: 'Description', field: 'description', sortable: true },
-        { name: 'image', label: 'Image', field: 'image', sortable: true },
+        { name: 'description', align: 'left', label: 'Description', field: 'description', sortable: true },
+        { name: 'language', label: 'language', field: 'language', sortable: true },
         { name: 'createdAt', label: 'Created At', field: 'createdAt' },
-        { name: 'view', label: 'View', field: 'view' }
-      ],
-      records : [
-        {
-          name: 'Frozen Yogurt',
-          description: 159,
-          image: 6.0,
-          createdAt: 24,
-          id: 'adfasdfasdfadfa'
-        },
-        {
-          name: 'Ice cream sandwich',
-          description: 237,
-          image: 9.0,
-          createdAt: 37,
-          id: 'dfasdfasdfasewe'
-        },
-        {
-          name: 'Eclair',
-          description: 262,
-          image: 16.0,
-          createdAt: 23,
-          id: 'weqwerqwerwsadf'
-        },
-        {
-          name: 'Cupcake',
-          description: 305,
-          image: 3.7,
-          createdAt: 67,
-          id: 'fghadffghxvbretwertwe'
-        }, 
-      ]
-
+        { name: 'id', label: 'View', field: 'id' }
+      ], 
     }
   }, 
   computed:{
-    ...mapGetters('repos', ['github_repos'])
+    ...mapGetters('repos', ['current_repos'])
   },
   components: {
       Dialog
   }, 
+  mounted(){
+    this.current_repos.forEach(repo => { 
+        this.repos.push({
+          id: repo.id,
+          name: repo.name,
+          description: repo.description,
+          language: repo.language,
+          createdAt: repo.created_at
+        })
+    })  
+  },
   methods: { 
       view_repo(id){
           const _ = this;    

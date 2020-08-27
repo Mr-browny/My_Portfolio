@@ -67,11 +67,10 @@ export default {
         }
     },
     mounted(){
-        this.load_github_repos()
-        console.log(this.github_repos)
+        // this.load_github_repos() 
     },
     methods: {
-        ...mapActions('repos', ['load_github_repos']),
+        // ...mapActions('repos', ['load_github_repos']),
     }
 }
 </script>

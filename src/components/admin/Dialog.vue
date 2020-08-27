@@ -37,7 +37,8 @@
             </q-card-section>
 
             <q-card-actions align="right" class="bg-white text-teal">
-            <q-btn color="secondary" rounded :label="type =='Edit' ?  'Update' : 'Add'" v-close-popup />
+            <!-- <q-btn color="secondary" rounded :label="type =='Edit' ?  'Update' : 'Add'" v-close-popup /> -->
+            <q-btn color="secondary" @click="take_action(`${type =='Edit' ?  'Update' : 'Add'}`)" rounded :label="type =='Edit' ?  'Update' : 'Add'" v-close-popup />
             </q-card-actions>
         </q-card>
     </q-dialog> 
@@ -47,7 +48,7 @@
 
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default { 
     props: ['type', 'from'],
@@ -57,6 +58,7 @@ export default {
     },
     data () {
         return { 
+            repo_id: '',
             fullWidth: false, 
             slide: 1,
             name: '',
@@ -67,8 +69,12 @@ export default {
         }
     },  
     methods: {
+        ...mapActions('repos', ['add_from_github_repo']),
+        ...mapActions('repos', ['edit_current_repo']),
         open(id){
             const _ = this; 
+            id ? _.repo_id = id : _.repo_id = '' /* This would add the id for general usage */
+
             _.fullWidth = !_.fullWidth
             var repo = {}
             //   Will use the id to fetch the partifular data
@@ -81,9 +87,35 @@ export default {
                 _.createdAt = repo.created_at 
             } else if (_.from == 'current') {
                 repo = _.current_repos.find( current => current.id == id)
-            }
-            console.log(repo)
-            // id ? console.log(id) : console.log('nothing here, keep moving')
+                _.name = repo.name 
+                _.description = repo.description  
+                _.language = repo.language 
+                _.githubLink = repo.html_url 
+                _.createdAt = repo.created_at 
+            } 
+        },
+        take_action(action){
+           const _ = this
+            var repo = {}
+           switch (_.type) {
+               case 'Add From Github': 
+                    repo = _.github_repos.find( git => git.id == _.repo_id) 
+                    _.add_from_github_repo(repo)
+                   break;
+                case 'New':
+                    alert('new')
+                    break;
+                case 'Edit':
+                     repo = _.current_repos.find( current => current.id == _.repo_id) 
+                        repo.name = _.name  
+                        repo.description = _.description  
+                        repo.language = _.language 
+                    _.edit_current_repo(repo)
+                    break;
+           
+               default:
+                   break;
+           }
         }
     },
 //   watch: {

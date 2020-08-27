@@ -11,10 +11,18 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: 'PageIndex',
   mounted(){ 
+    this.fetch_devTo_blogs() 
+     this.load_github_repos()
     this.$router.push({name: 'home'})
+  },
+  methods: {
+      ...mapActions('repos', ['load_github_repos']),
+      ...mapActions('blogs', ['fetch_devTo_blogs']),
   }
 }
 </script>

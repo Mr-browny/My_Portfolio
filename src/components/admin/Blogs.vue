@@ -56,13 +56,12 @@ export default {
   },
   mounted(){
     this.blogs.push(...this.devTo_blogs)
-    this.fetch_devTo_blogs()
+    // this.fetch_devTo_blogs()
   },
   methods: {
     ...mapActions('blogs', ['fetch_devTo_blogs']),
     view_blog(id){ 
-        // this.$router.push({name: 'singleAdminBlog', params: {blogId: id}})
-        this.$router.go(-1)
+        this.$router.push({name: 'singleBlog', params: {blogId: id}}) 
     }, 
   }
 }

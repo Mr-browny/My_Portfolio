@@ -19,6 +19,7 @@ const routes = [
       { path: 'vblog', component: () => import('pages/main/vblog.vue'), name: "vblog" },
       { path: 'portfolio', component: () => import('pages/main/portfolio.vue'), name: "portfolio" },
       { path: 'portfolio/:id', component: () => import('pages/main/_id/project.vue'), name: "project" },
+      { path: "singleBlog/:blogId", component: () => import('pages/main/_id/singleBlog.vue'), name: "singleBlog" }, 
     ]
   },
   {
@@ -38,7 +39,6 @@ const routes = [
       { path: "singleMessage/:messageId", component: () => import('pages/setup/id/singleMessage.vue'), name: "singleMessage" }, 
       { path: "portfolio", component: () => import('pages/setup/portfolio.vue'), name: "allPortfolio" }, 
       { path: "blog", component: () => import('pages/setup/blog.vue'), name: "adminBlog" }, 
-      { path: "singleBlog/:blogId", component: () => import('pages/setup/id/singleBlog.vue'), name: "singleAdminBlog" }, 
     ]
   },
 
